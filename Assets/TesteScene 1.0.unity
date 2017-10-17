@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 1927552146}
   - component: {fileID: 1927552148}
   - component: {fileID: 1927552150}
+  - component: {fileID: 1927552151}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -292,3 +293,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958648436e6f6a843837d44d410d8e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 1
+  max: 10
+  stdDev: 2
+--- !u!114 &1927552151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927552145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cdd2b9d884fe1b4fac41b781c04faa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NumOfRoomsToSpwan: 100

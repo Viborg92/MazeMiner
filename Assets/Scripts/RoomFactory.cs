@@ -18,12 +18,20 @@ public class RoomFactory : MonoBehaviour
     public void Generate(int xSize, int ySize, int xPos, int yPos)
     {
         GameObject newRoom = Instantiate(aRoom, new Vector3(xPos, yPos, 0), Quaternion.identity);
-        for (int y = 0; y <= ySize; y++)
+        if (ySize % 2 != 0)
         {
-            corretY = newRoom.transform.position.y + y - ySize / 2f;
-            for (int x = 0; x <= xSize; x++)
+            ySize++;
+        }
+        if (xSize % 2 != 0)
+        {
+            xSize++;
+        }
+        for (int y = 0; y < ySize; y++)
+        {
+            corretY = newRoom.transform.position.y + y - (ySize - 1) / 2f;
+            for (int x = 0; x < xSize; x++)
             {
-                corretX = newRoom.transform.position.x + x - xSize / 2f;
+                corretX = newRoom.transform.position.x + x - (xSize - 1) / 2f;
                 GameObject newBlock = Instantiate(block, new Vector3(corretX, corretY, 0f), Quaternion.identity);
                 newBlock.transform.parent = newRoom.transform;
             }
