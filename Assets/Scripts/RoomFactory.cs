@@ -5,13 +5,15 @@ using UnityEngine;
 /// <summary>
 /// Room factory.
 /// Creates a new room of size X and Y
-/// At postions X and Y.
+/// At postions X and Y. Giving the size the rooms,
+/// and storing them at in a list.
 /// </summary>
 
 public class RoomFactory : MonoBehaviour
 {
     [SerializeField, Tooltip("The Quad prefab")] GameObject block;
     [SerializeField, Tooltip("The Room prefab")] GameObject aRoom;
+    [SerializeField] public List<Room> Rooms = new List<Room>();
 
     private float corretX, corretY;
 
@@ -39,5 +41,6 @@ public class RoomFactory : MonoBehaviour
         Room thisRoom = newRoom.GetComponent<Room>();
         thisRoom.height = ySize;
         thisRoom.width = xSize;
+        Rooms.Add(thisRoom);
     }
 }

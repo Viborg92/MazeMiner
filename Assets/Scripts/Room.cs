@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Room.
+/// Each rooms adjusts its own collider, creates a list of the rooms it collies with
+/// And moves away accordingly
+/// </summary>
 [SelectionBase]
 public class Room : MonoBehaviour
 {
-    public int width, height, area;
+    public int width, height;
     public Vector3 sepVector;
     public Vector3 previousPos;
     public bool RoundedPos = false;
     [SerializeField] Collider2D[] intersectingRooms = new Collider2D[20];
+    public List<Room> ClosestRooms = new List<Room>();
     BoxCollider2D col;
+
+    public int area
+    {
+        get{ return width * height; }
+    }
 
     public void Awake()
     {
@@ -20,7 +31,6 @@ public class Room : MonoBehaviour
 
     public void Start()
     {
-        area = width * height;
         SetCollier();
     }
 

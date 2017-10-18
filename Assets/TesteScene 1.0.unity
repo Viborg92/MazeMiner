@@ -205,11 +205,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1927552149}
-  - component: {fileID: 1927552147}
-  - component: {fileID: 1927552146}
   - component: {fileID: 1927552148}
   - component: {fileID: 1927552150}
   - component: {fileID: 1927552151}
+  - component: {fileID: 1927552152}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -217,45 +216,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!23 &1927552146
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1927552145}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1927552147
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1927552145}
-  m_Mesh: {fileID: 0}
 --- !u!114 &1927552148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block: {fileID: 1271271122358700, guid: 1c4242242a119ca43a77457af0d5fbb6, type: 2}
   aRoom: {fileID: 1338534457425998, guid: 1f74f7eb8166da947bfa72e83b1bb093, type: 2}
+  Rooms: []
 --- !u!4 &1927552149
 Transform:
   m_ObjectHideFlags: 0
@@ -295,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 1
   max: 10
-  stdDev: 2
+  stdDev: 3
 --- !u!114 &1927552151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,4 +268,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdd2b9d884fe1b4fac41b781c04faa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumOfRoomsToSpwan: 100
+  numOfRoomsToSpwan: 100
+  numOfRoomsToKeep: 10
+  connectionPrRoom: 2
+--- !u!114 &1927552152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927552145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94088c01ee0b8d4a95c7069aa911401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
