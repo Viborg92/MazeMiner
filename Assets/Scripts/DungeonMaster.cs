@@ -10,7 +10,7 @@ public class DungeonMaster : MonoBehaviour
 {
     [SerializeField, Tooltip("The total amount of rooms being spawned")] int numOfRoomsToSpwan = 20;
     [SerializeField, Tooltip("The amount of biggest rooms that should be kept")] int numOfRoomsToKeep = 10;
-    [SerializeField, Tooltip("The amount of connections pr. room")] int connectionPrRoom = 10;
+    [SerializeField, Tooltip("The amount of connections pr. room")] int connectionPrRoom = 2;
 
     RoomFactory roomfactory;
     NormalDistribution normaldistribution;
