@@ -5,23 +5,22 @@ using System.Linq;
 
 /// <summary>
 /// Room finder.
-/// Takes in the list of rooms, orders them by area, and returns X amount from biggest to smallest.
+/// FindTheBiggest orders the rooms list by area, and returns X amount from biggest to smallest.
+/// FindClosestRoom loops through all rooms, and gives them a list X amount of rooms closest too them.
 /// </summary>
 public class RoomFinder : MonoBehaviour
 {
     RoomFactory roomfactory;
-    //Room room;
 
     // Use this for initialization
     void Awake()
     {
         roomfactory = gameObject.GetComponent<RoomFactory>();
-        // room = gameObject.GetComponent<Room>();
     }
 
     public IEnumerable<Room> FindTheBiggest(int amountOfRooms)
     {
-        return roomfactory.Rooms.OrderByDescending(room => room.area).Take(amountOfRooms);
+        return roomfactory.rooms.OrderByDescending(room => room.area).Take(amountOfRooms);
     }
 
     public void FindClosestRoom(IEnumerable<Room> selectedRooms, int connectionsPrRoom)
@@ -33,7 +32,7 @@ public class RoomFinder : MonoBehaviour
             closestA.Remove(roomA);
             Vector3 position = roomA.transform.position;
             closest = closestA.OrderBy(roomB => (position - roomB.transform.position).sqrMagnitude).Take(connectionsPrRoom).ToList();
-            roomA.ClosestRooms = closest;
+            roomA.closestRooms = closest;
         }
     }
 }

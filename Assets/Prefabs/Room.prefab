@@ -79,8 +79,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  area: 0
   sepVector: {x: 0, y: 0, z: 0}
   previousPos: {x: 0, y: 0, z: 0}
-  RoundedPos: 0
+  moving: 1
   intersectingRooms: []
+  closestRooms: []
+  PathingRoom: {fileID: 0}

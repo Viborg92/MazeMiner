@@ -14,10 +14,12 @@ public class Room : MonoBehaviour
     public int width, height;
     public Vector3 sepVector;
     public Vector3 previousPos;
-    public bool RoundedPos = false;
+    public bool moving = true;
     [SerializeField] Collider2D[] intersectingRooms = new Collider2D[20];
-    public List<Room> ClosestRooms = new List<Room>();
+    public List<Room> closestRooms = new List<Room>();
+    public Room PathingRoom;
     BoxCollider2D col;
+
 
     public int area
     {
@@ -37,6 +39,10 @@ public class Room : MonoBehaviour
     public void Update()
     {
         Separate();
+        if (PathingRoom != null)
+        {
+            Debug.DrawLine(transform.position, PathingRoom.transform.position, Color.white);
+        }
     }
 
     public void SetCollier()
@@ -47,34 +53,29 @@ public class Room : MonoBehaviour
     public void Separate()
     {
         sepVector = Vector3.zero;
-  
-        if (intersectingRooms.Length == 1)
-        {
-            transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
-            RoundedPos = true;
-        }
+
 
         intersectingRooms = Physics2D.OverlapBoxAll(transform.position, col.size - Vector2.one, 0);
 
-        foreach (Collider2D col in intersectingRooms)
+        foreach (Collider2D coll in intersectingRooms)
         {
-            if (col != this.col)
+            if (coll != this.col)
             {
-                sepVector += col.transform.position - transform.position;
+                moving = true;
+                sepVector += transform.position - coll.transform.position;
             }
         }
 
-        sepVector *= -1;
         sepVector.Normalize();
         float x = (sepVector.x > 0) ? Mathf.Ceil(sepVector.x) : Mathf.Floor(sepVector.x);
         float y = (sepVector.y > 0) ? Mathf.Ceil(sepVector.y) : Mathf.Floor(sepVector.y);
         sepVector = new Vector3(x, y, sepVector.z);
         transform.Translate(sepVector);
 
-        if (intersectingRooms.Length != 1 && RoundedPos == true)
+        if (intersectingRooms.Length == 1)
         {
-            RoundedPos = false;
-            transform.Translate(transform.position.normalized);
+            transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
+            moving = false;
         }
     }
 }

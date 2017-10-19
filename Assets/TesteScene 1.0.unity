@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 1927552150}
   - component: {fileID: 1927552151}
   - component: {fileID: 1927552152}
+  - component: {fileID: 1927552146}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -216,6 +217,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1927552146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927552145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406d0f64444159043932941eea4dbc24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PathList: []
 --- !u!114 &1927552148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block: {fileID: 1271271122358700, guid: 1c4242242a119ca43a77457af0d5fbb6, type: 2}
   aRoom: {fileID: 1338534457425998, guid: 1f74f7eb8166da947bfa72e83b1bb093, type: 2}
-  Rooms: []
+  rooms: []
 --- !u!4 &1927552149
 Transform:
   m_ObjectHideFlags: 0
@@ -254,9 +267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958648436e6f6a843837d44d410d8e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 1
+  min: 2
   max: 10
-  stdDev: 3
+  stdDev: 2
 --- !u!114 &1927552151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,9 +281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdd2b9d884fe1b4fac41b781c04faa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfRoomsToSpwan: 100
-  numOfRoomsToKeep: 10
-  connectionPrRoom: 2
+  numOfRoomsToSpwan: 500
+  numOfRoomsToKeep: 30
+  connectionPrRoom: 30
 --- !u!114 &1927552152
 MonoBehaviour:
   m_ObjectHideFlags: 0

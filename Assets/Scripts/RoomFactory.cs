@@ -13,7 +13,7 @@ public class RoomFactory : MonoBehaviour
 {
     [SerializeField, Tooltip("The Quad prefab")] GameObject block;
     [SerializeField, Tooltip("The Room prefab")] GameObject aRoom;
-    [SerializeField] public List<Room> Rooms = new List<Room>();
+    [SerializeField] public List<Room> rooms = new List<Room>();
 
     private float corretX, corretY;
 
@@ -41,6 +41,6 @@ public class RoomFactory : MonoBehaviour
         Room thisRoom = newRoom.GetComponent<Room>();
         thisRoom.height = ySize;
         thisRoom.width = xSize;
-        Rooms.Add(thisRoom);
+        rooms.Add(thisRoom);
     }
 }
