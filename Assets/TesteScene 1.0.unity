@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 1927552152}
   - component: {fileID: 1927552146}
   - component: {fileID: 1927552147}
+  - component: {fileID: 1927552153}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -242,6 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDone: 0
+  StopLoop: 0
 --- !u!114 &1927552148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,9 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdd2b9d884fe1b4fac41b781c04faa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfRoomsToSpwan: 500
-  numOfRoomsToKeep: 30
-  connectionPrRoom: 30
+  numOfRoomsToSpwan: 100
+  numOfRoomsToKeep: 5
+  connectionPrRoom: 5
 --- !u!114 &1927552152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,3 +310,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94088c01ee0b8d4a95c7069aa911401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1927552153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927552145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a102c27e0044240ae0dca7a45152e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Brick: {fileID: 1271271122358700, guid: 1c4242242a119ca43a77457af0d5fbb6, type: 2}

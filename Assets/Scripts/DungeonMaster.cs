@@ -20,6 +20,7 @@ public class DungeonMaster : MonoBehaviour
     RoomFinder roomfinder;
     RouteMaker routemaker;
     RoomMoveChecker roommovechecker;
+    CorridorCreator corridorcreator;
 
     // Use this for initialization
     void Awake()
@@ -29,6 +30,7 @@ public class DungeonMaster : MonoBehaviour
         roomfinder = GetComponent<RoomFinder>();
         routemaker = GetComponent<RouteMaker>();
         roommovechecker = GetComponent<RoomMoveChecker>();
+        corridorcreator = GetComponent<CorridorCreator>();
     }
 
     public void Start()
@@ -50,6 +52,7 @@ public class DungeonMaster : MonoBehaviour
     {
         roomfinder.FindClosestRoom(biggestRooms, connectionPrRoom);
         routemaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
+        corridorcreator.Maker(routemaker.PathList);
         routeFound = true;
     }
 
