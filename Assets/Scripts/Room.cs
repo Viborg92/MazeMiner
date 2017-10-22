@@ -20,6 +20,7 @@ public class Room : MonoBehaviour
     public Room PathingRoom;
     BoxCollider2D col;
 
+    RoomMoveChecker roommovechecker;
 
     public int area
     {
@@ -76,6 +77,10 @@ public class Room : MonoBehaviour
         {
             transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
             moving = false;
+        }
+        if (intersectingRooms.Length < 2 && !moving)
+        {
+            sepVector = (Vector3.Normalize(sepVector));
         }
     }
 }

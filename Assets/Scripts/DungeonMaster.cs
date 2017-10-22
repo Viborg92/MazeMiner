@@ -13,25 +13,26 @@ public class DungeonMaster : MonoBehaviour
     [SerializeField, Tooltip("The amount of biggest rooms that should be kept")] int numOfRoomsToKeep = 10;
     [SerializeField, Tooltip("The amount of connections pr. room")] int connectionPrRoom = 2;
     List<Room> biggestRooms;
-    bool isDoneMoving;
-
+    private bool routeFound = false;
 
     RoomFactory roomfactory;
     NormalDistribution normaldistribution;
     RoomFinder roomfinder;
     RouteMaker routemaker;
+    RoomMoveChecker roommovechecker;
+
     // Use this for initialization
     void Awake()
     {
-        roomfactory = gameObject.GetComponent<RoomFactory>();
-        normaldistribution = gameObject.GetComponent<NormalDistribution>();
-        roomfinder = gameObject.GetComponent<RoomFinder>();
-        routemaker = gameObject.GetComponent<RouteMaker>();
+        roomfactory = GetComponent<RoomFactory>();
+        normaldistribution = GetComponent<NormalDistribution>();
+        roomfinder = GetComponent<RoomFinder>();
+        routemaker = GetComponent<RouteMaker>();
+        roommovechecker = GetComponent<RoomMoveChecker>();
     }
 
     public void Start()
     {
-        isDoneMoving = false;
         MineMaker();
         biggestRooms = roomfinder.FindTheBiggest(numOfRoomsToKeep).ToList();
 
@@ -39,21 +40,17 @@ public class DungeonMaster : MonoBehaviour
 
     public void Update()
     {
-        if (!isDoneMoving)
+        if (roommovechecker.isDone && !routeFound)
         {
-            RoomMoveChecker();
+            ClosestAndRoute();
         }
-      
     }
 
-    void RoomMoveChecker()
+    void ClosestAndRoute()
     {
-        if (roomfactory.rooms.All(obj => !obj.moving))
-        {
-            isDoneMoving = true;
-            roomfinder.FindClosestRoom(biggestRooms, connectionPrRoom);
-            routemaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
-        }
+        roomfinder.FindClosestRoom(biggestRooms, connectionPrRoom);
+        routemaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
+        routeFound = true;
     }
 
 
