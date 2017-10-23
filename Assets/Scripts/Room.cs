@@ -40,10 +40,6 @@ public class Room : MonoBehaviour
     public void Update()
     {
         Separate();
-        if (PathingRoom != null)
-        {
-            Debug.DrawLine(transform.position, PathingRoom.transform.position, Color.white);
-        }
     }
 
     public void SetCollier()
@@ -80,7 +76,7 @@ public class Room : MonoBehaviour
         }
         if (intersectingRooms.Length < 2 && !moving)
         {
-            sepVector = (Vector3.Normalize(sepVector));
+            sepVector = (transform.position - Vector3.zero).normalized * Random.Range(-1, 1) * 5;
         }
     }
 }

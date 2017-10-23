@@ -18,6 +18,7 @@ public class RouteMaker : MonoBehaviour
                 room.PathingRoom = r;
                 ChooseRoute(r);
             }
+
             count++;
             if (count > r.closestRooms.Count)
             {

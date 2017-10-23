@@ -20,6 +20,7 @@ public class RoomFactory : MonoBehaviour
     public void Generate(int xSize, int ySize, int xPos, int yPos)
     {
         GameObject newRoom = Instantiate(aRoom, new Vector3(xPos, yPos, 0), Quaternion.identity);
+
         if (ySize % 2 != 0)
         {
             ySize++;
@@ -28,6 +29,7 @@ public class RoomFactory : MonoBehaviour
         {
             xSize++;
         }
+
         for (int y = 0; y < ySize; y++)
         {
             corretY = newRoom.transform.position.y + y - (ySize - 1) / 2f;
@@ -38,6 +40,7 @@ public class RoomFactory : MonoBehaviour
                 newBlock.transform.parent = newRoom.transform;
             }
         }
+
         Room thisRoom = newRoom.GetComponent<Room>();
         thisRoom.height = ySize;
         thisRoom.width = xSize;

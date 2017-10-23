@@ -50,10 +50,11 @@ public class DungeonMaster : MonoBehaviour
 
     void ClosestAndRoute()
     {
+        routeFound = true;
         roomfinder.FindClosestRoom(biggestRooms, connectionPrRoom);
         routemaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
         corridorcreator.Maker(routemaker.PathList);
-        routeFound = true;
+       
     }
 
 
