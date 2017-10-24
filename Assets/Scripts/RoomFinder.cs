@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 /// <summary>
 /// Room finder.
@@ -34,5 +35,26 @@ public class RoomFinder : MonoBehaviour
             closest = closestA.OrderBy(roomB => (position - roomB.transform.position).sqrMagnitude).Take(connectionsPrRoom).ToList();
             roomA.closestRooms = closest;
         }
+    }
+
+    public List<Room> FindMinAndMax()
+    {
+        Room maxX, minX;
+        Room maxY, minY;
+        List<Room> minMax = new List<Room>();
+
+        maxX = roomfactory.rooms.OrderByDescending(room => room.transform.position.x + room.width / 2f).First();
+        minMax.Add(maxX);
+
+        minX = roomfactory.rooms.OrderBy(room => room.transform.position.x - room.width / 2f).First();
+        minMax.Add(minX);
+
+        maxY = roomfactory.rooms.OrderByDescending(room => room.transform.position.y + room.height / 2f).First();
+        minMax.Add(maxY);
+
+        minY = roomfactory.rooms.OrderBy(room => room.transform.position.y - room.height / 2f).First();
+        minMax.Add(minY);
+
+        return minMax;
     }
 }

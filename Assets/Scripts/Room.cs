@@ -18,6 +18,7 @@ public class Room : MonoBehaviour
     [SerializeField] Collider2D[] intersectingRooms = new Collider2D[20];
     public List<Room> closestRooms = new List<Room>();
     public Room PathingRoom;
+    public float corrX, corrY;
     BoxCollider2D col;
 
     RoomMoveChecker roommovechecker;
@@ -40,6 +41,7 @@ public class Room : MonoBehaviour
     public void Update()
     {
         Separate();
+
     }
 
     public void SetCollier()
@@ -74,9 +76,10 @@ public class Room : MonoBehaviour
             transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
             moving = false;
         }
-        if (intersectingRooms.Length < 2 && !moving)
+        if (intersectingRooms.Length > 1 && sepVector == Vector3.zero)
         {
-            sepVector = (transform.position - Vector3.zero).normalized * Random.Range(-1, 1) * 5;
+            sepVector = (transform.position - Vector3.zero).normalized * Random.Range(-1, 1);
+            transform.Translate(sepVector);
         }
     }
 }

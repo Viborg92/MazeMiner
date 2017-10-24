@@ -236,6 +236,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114929591094158376, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
+        type: 2}
+      propertyPath: numOfRoomsToSpwan
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114929591094158376, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
+        type: 2}
+      propertyPath: numOfRoomsToKeep
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114929591094158376, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
+        type: 2}
+      propertyPath: connectionPrRoom
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114303231103042918, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
+        type: 2}
+      propertyPath: Brick
+      value: 
+      objectReference: {fileID: 1366032814508848, guid: d88682c2dcf8cf447b34385bc6614afa,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79124ac1b8b4caa4381c6d9bbd26fa49, type: 2}
   m_IsPrefabParent: 0
