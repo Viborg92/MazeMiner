@@ -13,12 +13,14 @@ public class RoomFactory : MonoBehaviour
 {
     [SerializeField, Tooltip("The Quad prefab")] GameObject block;
     [SerializeField, Tooltip("The Room prefab")] GameObject aRoom;
+    [SerializeField, Tooltip("The Mine prefab")] GameObject mine;
     [SerializeField] public List<Room> rooms = new List<Room>();
 
     private float corretX, corretY;
 
     public void Generate(int xSize, int ySize, int xPos, int yPos)
     {
+
         GameObject newRoom = Instantiate(aRoom, new Vector3(xPos, yPos, 0), Quaternion.identity);
 
         if (ySize % 2 != 0)
@@ -40,7 +42,6 @@ public class RoomFactory : MonoBehaviour
                 newBlock.transform.parent = newRoom.transform;
             }
         }
-
         Room thisRoom = newRoom.GetComponent<Room>();
         thisRoom.height = ySize;
         thisRoom.width = xSize;

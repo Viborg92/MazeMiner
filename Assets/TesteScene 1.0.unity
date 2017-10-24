@@ -108,6 +108,23 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &134546532 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1589830196309932, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
+    type: 2}
+  m_PrefabInternal: {fileID: 449138104}
+--- !u!114 &134546541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134546532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7bd8702a9f1e2419c6a9272281e7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wall: {fileID: 1271271122358700, guid: f2afbea1013184748b01cbcdee88eebb, type: 2}
 --- !u!1 &384477930
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +208,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 384477930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.136779, y: 7.7597575, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -124.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -256,6 +273,12 @@ Prefab:
       propertyPath: Brick
       value: 
       objectReference: {fileID: 1366032814508848, guid: d88682c2dcf8cf447b34385bc6614afa,
+        type: 2}
+    - target: {fileID: 114970499714113166, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
+        type: 2}
+      propertyPath: mine
+      value: 
+      objectReference: {fileID: 1635316470916450, guid: 520dc764085914f40a0d2ed2b5738fb5,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79124ac1b8b4caa4381c6d9bbd26fa49, type: 2}

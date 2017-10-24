@@ -8,6 +8,7 @@ using System;
 /// Room finder.
 /// FindTheBiggest orders the rooms list by area, and returns X amount from biggest to smallest.
 /// FindClosestRoom loops through all rooms, and gives them a list X amount of rooms closest too them.
+/// FindMinAndMax, looks at all rooms to find the room placed at repectlivly max X, Y and min X and Y.
 /// </summary>
 public class RoomFinder : MonoBehaviour
 {
@@ -37,23 +38,22 @@ public class RoomFinder : MonoBehaviour
         }
     }
 
-    public List<Room> FindMinAndMax()
+    public float[,] FindMinAndMax()
     {
-        Room maxX, minX;
-        Room maxY, minY;
-        List<Room> minMax = new List<Room>();
+        Room maxX, minX, maxY, minY;
+        float[,] minMax = new float[2, 2];
 
         maxX = roomfactory.rooms.OrderByDescending(room => room.transform.position.x + room.width / 2f).First();
-        minMax.Add(maxX);
+        minMax[0, 0] = maxX.transform.position.x + maxX.width / 2f;
 
         minX = roomfactory.rooms.OrderBy(room => room.transform.position.x - room.width / 2f).First();
-        minMax.Add(minX);
+        minMax[0, 1] = minX.transform.position.x - minX.width / 2f;
 
         maxY = roomfactory.rooms.OrderByDescending(room => room.transform.position.y + room.height / 2f).First();
-        minMax.Add(maxY);
+        minMax[1, 0] = maxY.transform.position.y + maxY.height / 2f;
 
         minY = roomfactory.rooms.OrderBy(room => room.transform.position.y - room.height / 2f).First();
-        minMax.Add(minY);
+        minMax[1, 1] = minY.transform.position.y - minY.height / 2f; 
 
         return minMax;
     }

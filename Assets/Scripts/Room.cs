@@ -41,7 +41,6 @@ public class Room : MonoBehaviour
     public void Update()
     {
         Separate();
-
     }
 
     public void SetCollier()
