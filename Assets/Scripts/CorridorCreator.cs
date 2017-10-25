@@ -7,10 +7,13 @@ using UnityEngine;
 /// Takes in a list of rooms that has a pathing room
 /// finds the postions to it different from the room it looks at
 /// then makes a corridor depending on its postion.
+/// In addtion it only spwans if there is free room.
 /// </summary>
 public class CorridorCreator : MonoBehaviour
 {
     [SerializeField,Tooltip("The prefab which is used to make the corridors of")] GameObject Brick;
+    [SerializeField, Tooltip("Object The corridor")] GameObject mine;
+
     private int right = 1;
     private int left = -1;
     private int up = 1;
@@ -65,7 +68,7 @@ public class CorridorCreator : MonoBehaviour
                         if (!Physics2D.OverlapPoint(nextXpos))
                         {
                             GameObject XCorr = Instantiate(Brick, nextXpos, Quaternion.identity);
-                            XCorr.transform.parent = roomA.transform;
+                            XCorr.transform.parent = mine.transform;
                         }
                     }
                 }
@@ -80,7 +83,7 @@ public class CorridorCreator : MonoBehaviour
                         if (!Physics2D.OverlapPoint(nextXpos))
                         {
                             GameObject XCorr = Instantiate(Brick, nextXpos, Quaternion.identity);
-                            XCorr.transform.parent = roomA.transform;
+                            XCorr.transform.parent = mine.transform;
                         }
                     }
                 
@@ -102,7 +105,7 @@ public class CorridorCreator : MonoBehaviour
                     if (!Physics2D.OverlapPoint(nextYpos))
                     {
                         GameObject YCorr = Instantiate(Brick, nextYpos, Quaternion.identity);
-                        YCorr.transform.parent = roomA.transform;
+                        YCorr.transform.parent = mine.transform;
                     }
                 }
             }
@@ -120,12 +123,10 @@ public class CorridorCreator : MonoBehaviour
                     if (!Physics2D.OverlapPoint(nextYpos))
                     {
                         GameObject YCorr = Instantiate(Brick, nextYpos, Quaternion.identity);
-                        YCorr.transform.parent = roomA.transform;
+                        YCorr.transform.parent = mine.transform;
                     }
                 }
             }
-            roomA.corrX = corrX;
-            roomA.corrY = corrY;
         }
     }
 }

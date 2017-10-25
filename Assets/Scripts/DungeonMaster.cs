@@ -14,7 +14,6 @@ public class DungeonMaster : MonoBehaviour
     [SerializeField, Tooltip("The amount of connections pr. room")] int connectionPrRoom = 2;
     public float[,] outerBounds = new float[2, 2];
     List<Room> biggestRooms;
-    private bool routeFound = false;
 
     RoomFactory roomfactory;
     NormalDistribution normaldistribution;
@@ -23,6 +22,8 @@ public class DungeonMaster : MonoBehaviour
     RoomMoveChecker roommovechecker;
     CorridorCreator corridorcreator;
     WallMaker wallmaker;
+    PlayerManager playermanager;
+    CameraBehavior camerabehavior;
 
     private float StartTime;
 
@@ -36,6 +37,8 @@ public class DungeonMaster : MonoBehaviour
         roommovechecker = GetComponent<RoomMoveChecker>();
         corridorcreator = GetComponent<CorridorCreator>();
         wallmaker = GetComponent<WallMaker>();
+        playermanager = GetComponent<PlayerManager>();
+        camerabehavior = Camera.main.GetComponent<CameraBehavior>();
     }
 
     public void Start()
@@ -48,7 +51,7 @@ public class DungeonMaster : MonoBehaviour
 
     public void Update()
     {
-        if (roommovechecker.isDone && !routeFound)
+        if (roommovechecker.isDone)
         {
             ClosestAndRoute();
         }
@@ -56,7 +59,6 @@ public class DungeonMaster : MonoBehaviour
 
     void ClosestAndRoute()
     {
-        routeFound = true;
         enabled = false; 
         roomfinder.FindClosestRoom(biggestRooms, connectionPrRoom);
         routemaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
@@ -64,6 +66,8 @@ public class DungeonMaster : MonoBehaviour
         outerBounds = roomfinder.FindMinAndMax();
         wallmaker.Mason(outerBounds);
         print("Dungeon Generation Finished In: <color=green>" + (Time.time - StartTime) + "</color>");
+        playermanager.spwanPlayer(biggestRooms[Random.Range(0, biggestRooms.Count)].transform.position);
+        camerabehavior.enabled = true;
     }
 
 

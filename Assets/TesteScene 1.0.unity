@@ -126,93 +126,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wall: {fileID: 1271271122358700, guid: f2afbea1013184748b01cbcdee88eebb, type: 2}
   dungeon: {fileID: 575258609}
---- !u!1 &179397816
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 179397819}
-  - component: {fileID: 179397818}
-  - component: {fileID: 179397817}
-  - component: {fileID: 179397820}
-  m_Layer: 0
-  m_Name: TestPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!50 &179397817
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 179397816}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &179397818
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 179397816}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 8, y: 8}
-  m_EdgeRadius: 0
---- !u!4 &179397819
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 179397816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.438154, y: 17.991226, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &179397820
+--- !u!114 &134546542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 179397816}
+  m_GameObject: {fileID: 134546532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02daaf79dc8d51a498d0e3ec3f70221d, type: 3}
+  m_Script: {fileID: 11500000, guid: d45ce937bbdb5d84a8fac41eca882d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1055729281556826, guid: 3dc4e7ebb13542943a429e9dcdaecf81, type: 2}
 --- !u!1 &384477930
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,9 +150,10 @@ GameObject:
   - component: {fileID: 384477933}
   - component: {fileID: 384477932}
   - component: {fileID: 384477931}
+  - component: {fileID: 384477936}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,12 +222,25 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 384477930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -124.2}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &384477936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 384477930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9193236242b05a244a282198ff74b7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dampTime: 0.15
+  target: {fileID: 0}
 --- !u!1001 &449138104
 Prefab:
   m_ObjectHideFlags: 0
@@ -363,6 +302,11 @@ Prefab:
       objectReference: {fileID: 1366032814508848, guid: d88682c2dcf8cf447b34385bc6614afa,
         type: 2}
     - target: {fileID: 114970499714113166, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
+        type: 2}
+      propertyPath: mine
+      value: 
+      objectReference: {fileID: 1624211433}
+    - target: {fileID: 114303231103042918, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
         type: 2}
       propertyPath: mine
       value: 

@@ -5,12 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Wall maker.
 /// The mason functions used the Max and min to create walls around the mine.
+/// before placing it look if there is something there allready, else it spwans a wall quad.
 /// </summary>
 public class WallMaker : MonoBehaviour
 {
     [SerializeField, Tooltip("The prefab used")] GameObject Wall;
     [SerializeField, Tooltip("The Wall parent prefab")] GameObject dungeon;
-
 
     public void Mason(float[,] size)
     {
