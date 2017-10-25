@@ -8,10 +8,10 @@ using UnityEngine;
 /// </summary>
 public class CameraBehavior : MonoBehaviour
 {
-    public float dampTime = 0.15f;
-    private Vector3 velocity = Vector3.zero;
     public GameObject target;
-    Camera mycamera;
+    [SerializeField, Tooltip("The damping effect on the camera.")] float dampTime = 0.15f;
+    private Vector3 velocity = Vector3.zero;
+    private Camera mycamera;
 
     void Awake()
     {

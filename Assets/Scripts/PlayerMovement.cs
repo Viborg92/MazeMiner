@@ -10,13 +10,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField, Tooltip("The a multipler for the players movement")]float speed = 5;
-    private Rigidbody2D myrigidbody;
     private Vector2 playerInput;
+    private Rigidbody2D myRigidbody;
 
     // Update is called once per frame
     public void Awake()
     {
-        myrigidbody = GetComponent<Rigidbody2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void Update()
@@ -28,6 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        myrigidbody.MovePosition(myrigidbody.position + playerInput * speed * Time.fixedDeltaTime);
+        myRigidbody.MovePosition(myRigidbody.position + playerInput * speed * Time.fixedDeltaTime);
     }
 }

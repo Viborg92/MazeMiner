@@ -8,7 +8,6 @@ using UnityEngine;
 /// </summary>
 public class SimpleOcclusion : MonoBehaviour
 {
-
     void OnTriggerEnter2D(Collider2D other)
     {
         MeshRenderer[] renders = other.gameObject.GetComponentsInChildren<MeshRenderer>();

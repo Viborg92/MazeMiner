@@ -10,13 +10,14 @@ using System.Linq;
 /// </summary>
 public class RoomMoveChecker : MonoBehaviour
 {
-    RoomFactory roomfactory;
     public bool isDone = false;
-    public bool StopLoop = false;
+
+    RoomFactory roomFactory;
+
     // Use this for initialization
     void Awake()
     {
-        roomfactory = GetComponent<RoomFactory>();
+        roomFactory = GetComponent<RoomFactory>();
     }
 
     void Update()
@@ -26,10 +27,10 @@ public class RoomMoveChecker : MonoBehaviour
 
     public void Check()
     {
-        if (roomfactory.rooms.All(obj => !obj.moving))
+        if (roomFactory.rooms.All(obj => !obj.moving))
         {
             isDone = true;
-            foreach (Room r in roomfactory.rooms)
+            foreach (Room r in roomFactory.rooms)
             {
                 r.enabled = false;
             }

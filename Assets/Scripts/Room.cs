@@ -11,16 +11,13 @@ using UnityEngine.UI;
 [SelectionBase]
 public class Room : MonoBehaviour
 {
+    [SerializeField]private Collider2D[] intersectingRooms = new Collider2D[20];
     public int width, height;
-    public Vector3 sepVector;
-    public Vector3 previousPos;
     public bool moving = true;
-    [SerializeField] Collider2D[] intersectingRooms = new Collider2D[20];
+    public Vector3 sepVector;
     public List<Room> closestRooms = new List<Room>();
-    public Room PathingRoom;
-    public float corrX, corrY;
+    public Room pathingRoom;
     public BoxCollider2D col;
-
 
     public int area
     {
@@ -50,7 +47,6 @@ public class Room : MonoBehaviour
     public void Separate()
     {
         sepVector = Vector3.zero;
-
 
         intersectingRooms = Physics2D.OverlapBoxAll(transform.position, col.size - Vector2.one, 0);
 

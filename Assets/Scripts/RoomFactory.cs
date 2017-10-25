@@ -14,7 +14,7 @@ public class RoomFactory : MonoBehaviour
     [SerializeField, Tooltip("The Quad prefab")] GameObject block;
     [SerializeField, Tooltip("The Room prefab")] GameObject aRoom;
     [SerializeField, Tooltip("The Mine prefab")] GameObject mine;
-    [SerializeField] public List<Room> rooms = new List<Room>();
+    public List<Room> rooms = new List<Room>();
 
     private float corretX, corretY;
 

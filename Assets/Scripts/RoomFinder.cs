@@ -12,17 +12,17 @@ using System;
 /// </summary>
 public class RoomFinder : MonoBehaviour
 {
-    RoomFactory roomfactory;
+    RoomFactory roomFactory;
 
     // Use this for initialization
     void Awake()
     {
-        roomfactory = gameObject.GetComponent<RoomFactory>();
+        roomFactory = gameObject.GetComponent<RoomFactory>();
     }
 
     public IEnumerable<Room> FindTheBiggest(int amountOfRooms)
     {
-        return roomfactory.rooms.OrderByDescending(room => room.area).Take(amountOfRooms);
+        return roomFactory.rooms.OrderByDescending(room => room.area).Take(amountOfRooms);
     }
 
     public void FindClosestRoom(IEnumerable<Room> selectedRooms, int connectionsPrRoom)
@@ -43,16 +43,16 @@ public class RoomFinder : MonoBehaviour
         Room maxX, minX, maxY, minY;
         float[,] minMax = new float[2, 2];
 
-        maxX = roomfactory.rooms.OrderByDescending(room => room.transform.position.x + room.width / 2f).First();
+        maxX = roomFactory.rooms.OrderByDescending(room => room.transform.position.x + room.width / 2f).First();
         minMax[0, 0] = maxX.transform.position.x + maxX.width / 2f;
 
-        minX = roomfactory.rooms.OrderBy(room => room.transform.position.x - room.width / 2f).First();
+        minX = roomFactory.rooms.OrderBy(room => room.transform.position.x - room.width / 2f).First();
         minMax[0, 1] = minX.transform.position.x - minX.width / 2f;
 
-        maxY = roomfactory.rooms.OrderByDescending(room => room.transform.position.y + room.height / 2f).First();
+        maxY = roomFactory.rooms.OrderByDescending(room => room.transform.position.y + room.height / 2f).First();
         minMax[1, 0] = maxY.transform.position.y + maxY.height / 2f;
 
-        minY = roomfactory.rooms.OrderBy(room => room.transform.position.y - room.height / 2f).First();
+        minY = roomFactory.rooms.OrderBy(room => room.transform.position.y - room.height / 2f).First();
         minMax[1, 1] = minY.transform.position.y - minY.height / 2f; 
 
         return minMax;

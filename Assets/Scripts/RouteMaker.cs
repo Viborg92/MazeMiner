@@ -15,7 +15,7 @@ public class RouteMaker : MonoBehaviour
         {
             if (r.tag != "SelectedRoom")
             {
-                room.PathingRoom = r;
+                room.pathingRoom = r;
                 ChooseRoute(r);
             }
 

@@ -10,18 +10,18 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField, Tooltip("The player prefab")] GameObject player;
 
-    CameraBehavior camerabehavior;
+    CameraBehavior cameraBehavior;
 
     public void Awake()
     {
-        camerabehavior = Camera.main.GetComponent<CameraBehavior>();
+        cameraBehavior = Camera.main.GetComponent<CameraBehavior>();
     }
 
     public void spwanPlayer(Vector3 pos)
     {
         pos.z = -1;
         GameObject newPlayer = Instantiate(player, pos, Quaternion.identity);
-        camerabehavior.target = newPlayer;
+        cameraBehavior.target = newPlayer;
         newPlayer.SetActive(true);
     }
 }

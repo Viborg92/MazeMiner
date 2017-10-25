@@ -13,45 +13,44 @@ public class DungeonMaster : MonoBehaviour
     [SerializeField, Tooltip("The amount of biggest rooms that should be kept")] int numOfRoomsToKeep = 10;
     [SerializeField, Tooltip("The amount of connections pr. room")] int connectionPrRoom = 2;
     public float[,] outerBounds = new float[2, 2];
+    private float startTime;
+
     List<Room> biggestRooms;
-
-    RoomFactory roomfactory;
-    NormalDistribution normaldistribution;
-    RoomFinder roomfinder;
-    RouteMaker routemaker;
-    RoomMoveChecker roommovechecker;
-    CorridorCreator corridorcreator;
-    WallMaker wallmaker;
-    PlayerManager playermanager;
-    CameraBehavior camerabehavior;
-
-    private float StartTime;
+    RoomFactory roomFactory;
+    NormalDistribution normalDistribution;
+    RoomFinder roomFinder;
+    RouteMaker routeMaker;
+    RoomMoveChecker roomMoveChecker;
+    CorridorCreator corridorCreator;
+    WallMaker wallMaker;
+    PlayerManager playerManager;
+    CameraBehavior cameraBehavior;
 
     // Use this for initialization
     void Awake()
     {
-        roomfactory = GetComponent<RoomFactory>();
-        normaldistribution = GetComponent<NormalDistribution>();
-        roomfinder = GetComponent<RoomFinder>();
-        routemaker = GetComponent<RouteMaker>();
-        roommovechecker = GetComponent<RoomMoveChecker>();
-        corridorcreator = GetComponent<CorridorCreator>();
-        wallmaker = GetComponent<WallMaker>();
-        playermanager = GetComponent<PlayerManager>();
-        camerabehavior = Camera.main.GetComponent<CameraBehavior>();
+        roomFactory = GetComponent<RoomFactory>();
+        normalDistribution = GetComponent<NormalDistribution>();
+        roomFinder = GetComponent<RoomFinder>();
+        routeMaker = GetComponent<RouteMaker>();
+        roomMoveChecker = GetComponent<RoomMoveChecker>();
+        corridorCreator = GetComponent<CorridorCreator>();
+        wallMaker = GetComponent<WallMaker>();
+        playerManager = GetComponent<PlayerManager>();
+        cameraBehavior = Camera.main.GetComponent<CameraBehavior>();
     }
 
     public void Start()
     {
-        StartTime = Time.time;
+        startTime = Time.time;
         MineMaker();
-        biggestRooms = roomfinder.FindTheBiggest(numOfRoomsToKeep).ToList();
+        biggestRooms = roomFinder.FindTheBiggest(numOfRoomsToKeep).ToList();
 
     }
 
     public void Update()
     {
-        if (roommovechecker.isDone)
+        if (roomMoveChecker.isDone)
         {
             ClosestAndRoute();
         }
@@ -60,22 +59,21 @@ public class DungeonMaster : MonoBehaviour
     void ClosestAndRoute()
     {
         enabled = false; 
-        roomfinder.FindClosestRoom(biggestRooms, connectionPrRoom);
-        routemaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
-        corridorcreator.Maker(routemaker.PathList);
-        outerBounds = roomfinder.FindMinAndMax();
-        wallmaker.Mason(outerBounds);
-        print("Dungeon Generation Finished In: <color=green>" + (Time.time - StartTime) + "</color>");
-        playermanager.spwanPlayer(biggestRooms[Random.Range(0, biggestRooms.Count)].transform.position);
-        camerabehavior.enabled = true;
+        roomFinder.FindClosestRoom(biggestRooms, connectionPrRoom);
+        routeMaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
+        corridorCreator.Maker(routeMaker.PathList);
+        outerBounds = roomFinder.FindMinAndMax();
+        wallMaker.Mason(outerBounds);
+        print("Dungeon Generation Finished In: <color=green>" + (Time.time - startTime) + "</color>");
+        playerManager.spwanPlayer(biggestRooms[Random.Range(0, biggestRooms.Count)].transform.position);
+        cameraBehavior.enabled = true;
     }
-
 
     void MineMaker()
     {
         for (int i = 0; i < numOfRoomsToSpwan; i++)
         {
-            roomfactory.Generate(normaldistribution.Gaussian(), normaldistribution.Gaussian(), Random.Range(-25, 25), Random.Range(-25, 25));
+            roomFactory.Generate(normalDistribution.Gaussian(), normalDistribution.Gaussian(), Random.Range(-25, 25), Random.Range(-25, 25));
         }
     }
 }
