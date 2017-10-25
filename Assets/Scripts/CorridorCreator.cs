@@ -60,9 +60,13 @@ public class CorridorCreator : MonoBehaviour
                     corrX -= (roomA.width) / 2;
                     for (int x = 0; x < corrX; x++)
                     {
-                        GameObject XCorr = Instantiate(Brick, new Vector3((x + roomA.transform.position.x) + horizontalOffset + 0.5f * horizontal,
-                                               roomA.transform.position.y + .5f * vertical, 0), Quaternion.identity);
-                        XCorr.transform.parent = roomA.transform;
+                        Vector3 nextXpos = new Vector3((x + roomA.transform.position.x) + horizontalOffset + 0.5f * horizontal,
+                                               roomA.transform.position.y + .5f * vertical, 0);
+                        if (!Physics2D.OverlapPoint(nextXpos))
+                        {
+                            GameObject XCorr = Instantiate(Brick, nextXpos, Quaternion.identity);
+                            XCorr.transform.parent = roomA.transform;
+                        }
                     }
                 }
                 else
@@ -71,9 +75,13 @@ public class CorridorCreator : MonoBehaviour
                     corrX += (roomA.width) / 2;
                     for (int x = 0; x > corrX; x--)
                     {
-                        GameObject XCorr = Instantiate(Brick, new Vector3((x + roomA.transform.position.x) + horizontalOffset + 0.5f * horizontal,
-                                               roomA.transform.position.y + .5f * vertical, 0), Quaternion.identity);
-                        XCorr.transform.parent = roomA.transform;
+                        Vector3 nextXpos = new Vector3((x + roomA.transform.position.x) + horizontalOffset + 0.5f * horizontal,
+                                               roomA.transform.position.y + .5f * vertical, 0);
+                        if (!Physics2D.OverlapPoint(nextXpos))
+                        {
+                            GameObject XCorr = Instantiate(Brick, nextXpos, Quaternion.identity);
+                            XCorr.transform.parent = roomA.transform;
+                        }
                     }
                 
                 }
@@ -89,9 +97,13 @@ public class CorridorCreator : MonoBehaviour
                 corrY -= (roomA.PathingRoom.height) / 2;
                 for (int y = 0; y < corrY; y++)
                 {
-                    GameObject YCorr = Instantiate(Brick, new Vector3(roomA.transform.position.x + corrX + horizontalOffset + 0.5f * horizontal,
-                                           y + roomA.transform.position.y + (.5f + verticalOffset) * vertical, 0), Quaternion.identity);
-                    YCorr.transform.parent = roomA.transform;
+                    Vector3 nextYpos = new Vector3(roomA.transform.position.x + corrX + horizontalOffset + 0.5f * horizontal,
+                                           y + roomA.transform.position.y + (.5f + verticalOffset) * vertical, 0);
+                    if (!Physics2D.OverlapPoint(nextYpos))
+                    {
+                        GameObject YCorr = Instantiate(Brick, nextYpos, Quaternion.identity);
+                        YCorr.transform.parent = roomA.transform;
+                    }
                 }
             }
             else
@@ -103,9 +115,13 @@ public class CorridorCreator : MonoBehaviour
                 corrY += (roomA.PathingRoom.height) / 2;
                 for (int y = 0; y > corrY; y--)
                 {
-                    GameObject YCorr = Instantiate(Brick, new Vector3(roomA.transform.position.x + corrX + horizontalOffset + 0.5f * horizontal,
-                                           y + roomA.transform.position.y + (.5f + verticalOffset) * vertical, 0), Quaternion.identity);
-                    YCorr.transform.parent = roomA.transform;
+                    Vector3 nextYpos = new Vector3(roomA.transform.position.x + corrX + horizontalOffset + 0.5f * horizontal,
+                                           y + roomA.transform.position.y + (.5f + verticalOffset) * vertical, 0);
+                    if (!Physics2D.OverlapPoint(nextYpos))
+                    {
+                        GameObject YCorr = Instantiate(Brick, nextYpos, Quaternion.identity);
+                        YCorr.transform.parent = roomA.transform;
+                    }
                 }
             }
             roomA.corrX = corrX;

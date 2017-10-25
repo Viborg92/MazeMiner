@@ -45,6 +45,9 @@ public class RoomFactory : MonoBehaviour
         Room thisRoom = newRoom.GetComponent<Room>();
         thisRoom.height = ySize;
         thisRoom.width = xSize;
+
+        newRoom.transform.parent = mine.transform;
+
         rooms.Add(thisRoom);
     }
 }

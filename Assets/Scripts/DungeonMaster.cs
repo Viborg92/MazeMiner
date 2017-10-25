@@ -24,6 +24,8 @@ public class DungeonMaster : MonoBehaviour
     CorridorCreator corridorcreator;
     WallMaker wallmaker;
 
+    private float StartTime;
+
     // Use this for initialization
     void Awake()
     {
@@ -38,6 +40,7 @@ public class DungeonMaster : MonoBehaviour
 
     public void Start()
     {
+        StartTime = Time.time;
         MineMaker();
         biggestRooms = roomfinder.FindTheBiggest(numOfRoomsToKeep).ToList();
 
@@ -54,11 +57,13 @@ public class DungeonMaster : MonoBehaviour
     void ClosestAndRoute()
     {
         routeFound = true;
+        enabled = false; 
         roomfinder.FindClosestRoom(biggestRooms, connectionPrRoom);
         routemaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
         corridorcreator.Maker(routemaker.PathList);
         outerBounds = roomfinder.FindMinAndMax();
         wallmaker.Mason(outerBounds);
+        print("Dungeon Generation Finished In: <color=green>" + (Time.time - StartTime) + "</color>");
     }
 
 

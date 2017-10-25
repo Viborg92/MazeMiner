@@ -29,6 +29,10 @@ public class RoomMoveChecker : MonoBehaviour
         if (roomfactory.rooms.All(obj => !obj.moving))
         {
             isDone = true;
+            foreach (Room r in roomfactory.rooms)
+            {
+                r.enabled = false;
+            }
             enabled = false;
         }
     }

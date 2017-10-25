@@ -19,9 +19,8 @@ public class Room : MonoBehaviour
     public List<Room> closestRooms = new List<Room>();
     public Room PathingRoom;
     public float corrX, corrY;
-    BoxCollider2D col;
+    public BoxCollider2D col;
 
-    RoomMoveChecker roommovechecker;
 
     public int area
     {
