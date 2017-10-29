@@ -68,7 +68,7 @@ public class DungeonMaster : MonoBehaviour
         wallMaker.Mason(outerBounds);
         print("Dungeon Generation Finished In: <color=green>" + (Time.time - startTime) + "</color>");
         exitmaker.MineShaft(biggestRooms[Random.Range(0, biggestRooms.Count)]);
-        playerManager.spwanPlayer(biggestRooms[Random.Range(0, biggestRooms.Count)].transform.position);
+        playerManager.spwanPlayer(biggestRooms);
         cameraBehavior.enabled = true;
     }
 
