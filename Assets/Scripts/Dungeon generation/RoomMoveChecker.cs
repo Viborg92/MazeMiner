@@ -27,6 +27,7 @@ public class RoomMoveChecker : MonoBehaviour
 
     public void Check()
     {
+        //TODO:Consider if there is a better way to do this.
         if (roomFactory.rooms.All(obj => !obj.moving))
         {
             isDone = true;

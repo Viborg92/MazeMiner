@@ -25,6 +25,7 @@ public class DungeonMaster : MonoBehaviour
     WallMaker wallMaker;
     PlayerManager playerManager;
     CameraBehavior cameraBehavior;
+    ExitMaker exitmaker;
 
     // Use this for initialization
     void Awake()
@@ -38,6 +39,7 @@ public class DungeonMaster : MonoBehaviour
         wallMaker = GetComponent<WallMaker>();
         playerManager = GetComponent<PlayerManager>();
         cameraBehavior = Camera.main.GetComponent<CameraBehavior>();
+        exitmaker = GetComponent<ExitMaker>();
     }
 
     public void Start()
@@ -65,6 +67,7 @@ public class DungeonMaster : MonoBehaviour
         outerBounds = roomFinder.FindMinAndMax();
         wallMaker.Mason(outerBounds);
         print("Dungeon Generation Finished In: <color=green>" + (Time.time - startTime) + "</color>");
+        exitmaker.MineShaft(biggestRooms[Random.Range(0, biggestRooms.Count)]);
         playerManager.spwanPlayer(biggestRooms[Random.Range(0, biggestRooms.Count)].transform.position);
         cameraBehavior.enabled = true;
     }

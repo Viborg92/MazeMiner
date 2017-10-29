@@ -15,8 +15,8 @@ public class Room : MonoBehaviour
     public int width, height;
     public bool moving = true;
     public Vector3 sepVector;
-    public List<Room> closestRooms = new List<Room>();
-    public Room pathingRoom;
+    public List<Room> roomsByDistance = new List<Room>();
+    public Room linkingRoom;
     public BoxCollider2D col;
 
     public int area
@@ -36,6 +36,7 @@ public class Room : MonoBehaviour
 
     public void Update()
     {
+        //TODO: Make iterations instead of calling from update.
         Separate();
     }
 

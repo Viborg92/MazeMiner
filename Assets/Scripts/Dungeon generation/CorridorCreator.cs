@@ -23,15 +23,15 @@ public class CorridorCreator : MonoBehaviour
     {
         foreach (Room roomA in rooms)
         {
-            if (roomA.pathingRoom == null)
+            if (roomA.linkingRoom == null)
             {
                 continue;
             }
             float corrX = 0;
             float corrY = 0;
 
-            corrX = (roomA.pathingRoom.transform.position.x - roomA.transform.position.x);
-            corrY = (roomA.pathingRoom.transform.position.y - roomA.transform.position.y);
+            corrX = (roomA.linkingRoom.transform.position.x - roomA.transform.position.x);
+            corrY = (roomA.linkingRoom.transform.position.y - roomA.transform.position.y);
 
             float horizontalOffset = 0;
             float verticalOffset = 0;
@@ -39,10 +39,10 @@ public class CorridorCreator : MonoBehaviour
             int vertical = (corrY > 0) ? up : down;
 
             //Look if the room is within the height of the pathing room.
-            if (Mathf.Abs(corrY) <= roomA.pathingRoom.height / 2)
+            if (Mathf.Abs(corrY) <= roomA.linkingRoom.height / 2)
             {
                 //Adjust the corrX with the offset depending on if X is negative or postive.
-                corrX += (corrX > 0) ? -(roomA.pathingRoom.width / 2) : (roomA.pathingRoom.width / 2);
+                corrX += (corrX > 0) ? -(roomA.linkingRoom.width / 2) : (roomA.linkingRoom.width / 2);
                 //Setting corrY to Y as we don't need to build in Y then.
                 corrY = 0;
             }
@@ -58,7 +58,7 @@ public class CorridorCreator : MonoBehaviour
             //X Postive
             if (corrX != 0)
             {
-                if (roomA.transform.position.x < roomA.pathingRoom.transform.position.x)
+                if (roomA.transform.position.x < roomA.linkingRoom.transform.position.x)
                 {
                     horizontalOffset = (roomA.width) / 2f;
                     corrX -= (roomA.width) / 2;
@@ -92,14 +92,14 @@ public class CorridorCreator : MonoBehaviour
                 }
             }
             //Y postive
-            if (roomA.transform.position.y < roomA.pathingRoom.transform.position.y)
+            if (roomA.transform.position.y < roomA.linkingRoom.transform.position.y)
             {
                 if (corrX == 0)
                 {
                     verticalOffset = (roomA.height) / 2f;
                 }
               
-                corrY -= (roomA.pathingRoom.height) / 2;
+                corrY -= (roomA.linkingRoom.height) / 2;
                 for (int y = 0; y < corrY; y++)
                 {
                     Vector3 nextYpos = new Vector3(roomA.transform.position.x + corrX + horizontalOffset + 0.5f * horizontal,
@@ -118,7 +118,7 @@ public class CorridorCreator : MonoBehaviour
                 {
                     verticalOffset = (roomA.height) / 2f;
                 }
-                corrY += (roomA.pathingRoom.height) / 2;
+                corrY += (roomA.linkingRoom.height) / 2;
                 for (int y = 0; y > corrY; y--)
                 {
                     Vector3 nextYpos = new Vector3(roomA.transform.position.x + corrX + horizontalOffset + 0.5f * horizontal,

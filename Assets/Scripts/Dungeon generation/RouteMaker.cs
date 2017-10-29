@@ -11,16 +11,17 @@ public class RouteMaker : MonoBehaviour
         PathList.Add(room);
         int count = 0;
         room.tag = "SelectedRoom";
-        foreach (Room r in room.closestRooms)
+        foreach (Room r in room.roomsByDistance)
         {
             if (r.tag != "SelectedRoom")
             {
-                room.pathingRoom = r;
+                room.linkingRoom = r;
                 ChooseRoute(r);
+                break;
             }
 
             count++;
-            if (count > r.closestRooms.Count)
+            if (count > r.roomsByDistance.Count)
             {
                 return;
             }

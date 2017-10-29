@@ -34,7 +34,7 @@ public class RoomFinder : MonoBehaviour
             closestA.Remove(roomA);
             Vector3 position = roomA.transform.position;
             closest = closestA.OrderBy(roomB => (position - roomB.transform.position).sqrMagnitude).Take(connectionsPrRoom).ToList();
-            roomA.closestRooms = closest;
+            roomA.roomsByDistance = closest;
         }
     }
 
