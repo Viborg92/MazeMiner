@@ -15,8 +15,9 @@ public class UponExit : MonoBehaviour
     {
         if (other.tag == "Player" && other.GetType() == typeof(BoxCollider2D))
         {
-            Debug.Log("We in");
+            Debug.Log("We got inside the loop");
             dungeonJanitor.ClearDungeon();
+            Debug.Log("After the function call");
             Destroy(gameObject);
             Destroy(this);
         }

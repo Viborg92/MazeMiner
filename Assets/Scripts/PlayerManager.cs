@@ -17,11 +17,23 @@ public class PlayerManager : MonoBehaviour
         cameraBehavior = Camera.main.GetComponent<CameraBehavior>();
     }
 
-    public void spwanPlayer(Vector3 pos)
+
+    public void spwanPlayer(List<Room> rooms)
     {
-        pos.z = -1;
-        GameObject newPlayer = Instantiate(player, pos, Quaternion.identity);
-        cameraBehavior.target = newPlayer;
-        newPlayer.SetActive(true);
+        Room spwaningRoom;
+
+        spwaningRoom = rooms[Random.Range(0, rooms.Count)];
+        if (spwaningRoom.tag == "exitRoom")
+        {
+            spwaningRoom = rooms[Random.Range(0, rooms.Count)];
+        }
+        else
+        {
+            Vector3 pos = spwaningRoom.transform.position;
+            pos.z = -1;
+            GameObject newPlayer = Instantiate(player, pos, Quaternion.identity);
+            cameraBehavior.target = newPlayer;
+            newPlayer.SetActive(true);
+        }
     }
 }

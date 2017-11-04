@@ -8,12 +8,13 @@ public class DungeonJanitor : MonoBehaviour
 
     public void ClearDungeon()
     {
-        for (int i = 0; i < parentObjs.Length; i++)
+        Debug.Log("Called the script");
+        foreach (GameObject item in parentObjs)
         {
-            int childs = parentObjs[i].transform.childCount;
-            for (int j = 0; j < childs; j++)
+            foreach (Transform child in item.transform)
             {
-                Destroy(parentObjs[i].transform.GetChild(j).gameObject.transform);
+                Destroy(this);
+                break;
             }
         }
     }
