@@ -13,10 +13,8 @@ public class DungeonJanitor : MonoBehaviour
             int childs = parentObjs[i].transform.childCount;
             for (int j = 0; j < childs; j++)
             {
-                Destroy(transform.GetChild(j).gameObject);
+                Destroy(parentObjs[i].transform.GetChild(j).gameObject.transform);
             }
         }
-
-
     }
 }

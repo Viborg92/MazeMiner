@@ -312,17 +312,17 @@ Prefab:
     - target: {fileID: 114929591094158376, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
         type: 2}
       propertyPath: numOfRoomsToSpwan
-      value: 1000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114929591094158376, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
         type: 2}
       propertyPath: numOfRoomsToKeep
-      value: 50
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114929591094158376, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
         type: 2}
       propertyPath: connectionPrRoom
-      value: 50
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114303231103042918, guid: 79124ac1b8b4caa4381c6d9bbd26fa49,
         type: 2}
