@@ -8,13 +8,11 @@ public class DungeonJanitor : MonoBehaviour
 
     public void ClearDungeon()
     {
-        Debug.Log("Called the script");
         foreach (GameObject item in parentObjs)
         {
             foreach (Transform child in item.transform)
             {
-                Destroy(this);
-                break;
+                Destroy(child.gameObject);
             }
         }
     }
