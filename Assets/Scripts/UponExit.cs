@@ -6,9 +6,10 @@ public class UponExit : MonoBehaviour
 {
     DungeonJanitor dungeonJanitor;
 
-    void Awake()
+    void Start()
     {
-        dungeonJanitor = gameObject.GetComponent<DungeonJanitor>();
+        GameObject SceneManager = GameObject.Find("Scene Manager");
+        dungeonJanitor = SceneManager.GetComponent<DungeonJanitor>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
