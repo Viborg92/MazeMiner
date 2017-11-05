@@ -11,11 +11,10 @@ public class DungeonMaster : MonoBehaviour
 {
     [SerializeField, Tooltip("The total amount of rooms being spawned")] int numOfRoomsToSpwan = 20;
     [SerializeField, Tooltip("The amount of biggest rooms that should be kept")] int numOfRoomsToKeep = 10;
-    [SerializeField, Tooltip("The amount of connections pr. room")] int connectionPrRoom = 2;
     public float[,] outerBounds = new float[2, 2];
     private float startTime;
 
-    List<Room> biggestRooms;
+    public List<Room> biggestRooms;
     RoomFactory roomFactory;
     NormalDistribution normalDistribution;
     RoomFinder roomFinder;
@@ -44,24 +43,32 @@ public class DungeonMaster : MonoBehaviour
 
     public void Start()
     {
-        startTime = Time.time;
-        MineMaker();
-        biggestRooms = roomFinder.FindTheBiggest(numOfRoomsToKeep).ToList();
-
+        Initialization();
     }
 
     public void Update()
     {
         if (roomMoveChecker.isDone)
         {
-            ClosestAndRoute();
+            DungeonAndPlayerSetup();
         }
     }
 
-    void ClosestAndRoute()
+    public void Initialization()
+    {
+        startTime = 0;
+        startTime = Time.time;
+        for (int i = 0; i < numOfRoomsToSpwan; i++)
+        {
+            roomFactory.Generate(normalDistribution.Gaussian(), normalDistribution.Gaussian(), Random.Range(-25, 25), Random.Range(-25, 25));
+        }
+        biggestRooms = new List<Room>(roomFinder.FindTheBiggest(numOfRoomsToKeep).ToList());
+    }
+
+    void DungeonAndPlayerSetup()
     {
         enabled = false; 
-        roomFinder.FindClosestRoom(biggestRooms, connectionPrRoom);
+        roomFinder.FindClosestRoom(biggestRooms, numOfRoomsToKeep);
         routeMaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
         corridorCreator.Maker(routeMaker.PathList);
         outerBounds = roomFinder.FindMinAndMax();
@@ -70,13 +77,5 @@ public class DungeonMaster : MonoBehaviour
         exitmaker.MineShaft(biggestRooms[Random.Range(0, biggestRooms.Count)]);
         playerManager.spwanPlayer(biggestRooms);
         cameraBehavior.enabled = true;
-    }
-
-    void MineMaker()
-    {
-        for (int i = 0; i < numOfRoomsToSpwan; i++)
-        {
-            roomFactory.Generate(normalDistribution.Gaussian(), normalDistribution.Gaussian(), Random.Range(-25, 25), Random.Range(-25, 25));
-        }
     }
 }
