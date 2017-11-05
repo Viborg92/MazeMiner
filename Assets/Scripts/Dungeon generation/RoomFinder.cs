@@ -25,7 +25,7 @@ public class RoomFinder : MonoBehaviour
         return roomFactory.rooms.OrderByDescending(room => room.area).Take(amountOfRooms);
     }
 
-    public void FindClosestRoom(IEnumerable<Room> selectedRooms, int connectionsPrRoom)
+    public void FindClosestRoom(IEnumerable<Room> selectedRooms, int numOfRoomsToKeep)
     {
         foreach (Room roomA in selectedRooms)
         {
@@ -33,7 +33,7 @@ public class RoomFinder : MonoBehaviour
             List<Room> closestA = new List<Room>(selectedRooms);
             closestA.Remove(roomA);
             Vector3 position = roomA.transform.position;
-            closest = closestA.OrderBy(roomB => (position - roomB.transform.position).sqrMagnitude).Take(connectionsPrRoom).ToList();
+            closest = closestA.OrderBy(roomB => (position - roomB.transform.position).sqrMagnitude).Take(numOfRoomsToKeep).ToList();
             roomA.roomsByDistance = closest;
         }
     }
