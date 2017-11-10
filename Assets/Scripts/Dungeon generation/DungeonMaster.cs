@@ -56,6 +56,7 @@ public class DungeonMaster : MonoBehaviour
 
     public void Initialization()
     {
+        roomFactory.rooms.Clear();
         startTime = 0;
         startTime = Time.time;
         for (int i = 0; i < numOfRoomsToSpwan; i++)
