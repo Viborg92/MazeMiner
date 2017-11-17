@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Room.
 /// Each rooms adjusts its own collider, creates a list of the rooms it collies with
-/// And moves away accordingly
+/// And moves away accordingly.
 /// </summary>
 [SelectionBase]
 public class Room : MonoBehaviour

@@ -1,29 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Upon exit. Is placed on the Exit prefab,
+/// Increases the floor count, and reloads the level for the player.
+/// </summary>
 public class UponExit : MonoBehaviour
 {
-    DungeonJanitor dungeonJanitor;
-    DungeonMaster dungeonMaster;
-
-    void Start()
-    {
-        GameObject SceneManager = GameObject.Find("Scene Manager");
-        dungeonJanitor = SceneManager.GetComponent<DungeonJanitor>();
-        dungeonMaster = SceneManager.GetComponent<DungeonMaster>();
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && other.GetType() == typeof(BoxCollider2D))
         {
-            dungeonJanitor.ClearDungeon();
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
-            dungeonMaster.Initialization();
-            dungeonMaster.enabled = false;
-            dungeonMaster.enabled = true;
+            int currentFloor;
+            currentFloor = PlayerPrefs.GetInt("Floor", 0);
+            currentFloor++;
+            PlayerPrefs.SetInt("Floor", currentFloor);
+
+            SceneManager.LoadScene("TesteScene 1.0");
         }
     }
 }

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Route maker.
+/// Creates takes in a list of rooms, which is assumed to have a roomsByDistance assigned in them.
+/// It then creates a linked list of the rooms.
+/// </summary>
 public class RouteMaker : MonoBehaviour
 {
     public List<Room> PathList = new List<Room>();

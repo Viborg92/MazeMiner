@@ -4,7 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Player manager.
-/// Spwans the character and gives the object to the camera.
+/// Spwans the character and gives the information about the character to to the camera.
+/// It also makes sure that the player does not spwan in the same room as the exit.
 /// </summary>
 public class PlayerManager : MonoBehaviour
 {
@@ -21,19 +22,16 @@ public class PlayerManager : MonoBehaviour
     public void spwanPlayer(List<Room> rooms)
     {
         Room spwaningRoom;
-
         spwaningRoom = rooms[Random.Range(0, rooms.Count)];
-        if (spwaningRoom.tag == "exitRoom")
+
+        while (spwaningRoom.tag == "exitRoom")
         {
             spwaningRoom = rooms[Random.Range(0, rooms.Count)];
         }
-        else
-        {
-            Vector3 pos = spwaningRoom.transform.position;
-            pos.z = -1;
-            GameObject newPlayer = Instantiate(player, pos, Quaternion.identity);
-            cameraBehavior.target = newPlayer;
-            newPlayer.SetActive(true);
-        }
+        Vector3 pos = spwaningRoom.transform.position;
+        pos.z = -1;
+        GameObject newPlayer = Instantiate(player, pos, Quaternion.identity);
+        cameraBehavior.target = newPlayer;
+        newPlayer.SetActive(true);
     }
 }
