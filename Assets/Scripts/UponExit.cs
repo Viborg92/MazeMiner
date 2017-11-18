@@ -17,8 +17,7 @@ public class UponExit : MonoBehaviour
             currentFloor = PlayerPrefs.GetInt("Floor", 0);
             currentFloor++;
             PlayerPrefs.SetInt("Floor", currentFloor);
-
-            SceneManager.LoadScene("TesteScene 1.0");
+            SceneManager.LoadScene("InterMission");
         }
     }
 }

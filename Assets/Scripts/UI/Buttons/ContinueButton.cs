@@ -1,8 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LoadGameButton : BaseButtonEffects
+/// <summary>
+/// Continue button.
+/// Makes the next floor.
+/// </summary>
+public class ContinueButton : BaseButtonEffects
 {
     protected override void Awake()
     {
@@ -11,6 +16,6 @@ public class LoadGameButton : BaseButtonEffects
 
     public override void OnPointerDown(UnityEngine.EventSystems.PointerEventData dataname)
     {
-        throw new System.NotImplementedException();
+        SceneManager.LoadScene("GameScene");
     }
 }

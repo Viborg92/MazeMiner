@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// New game button.
-/// Is assigend to a Buttons onClick function
-/// It will then reset the playerprefs and load the gamescene.
+/// Main menu button.
+/// Takes the player to the MainMenu scene.
 /// </summary>
-public class NewGameButton : BaseButtonEffects
+public class MainMenuButton : BaseButtonEffects
 {
     protected override void Awake()
     {
@@ -17,7 +16,6 @@ public class NewGameButton : BaseButtonEffects
 
     public override void OnPointerDown(UnityEngine.EventSystems.PointerEventData dataname)
     {
-        PlayerPrefs.SetInt("Floor", 0);
-        SceneManager.LoadScene("TesteScene 1.0");
+        SceneManager.LoadScene("MainMenu");
     }
 }
