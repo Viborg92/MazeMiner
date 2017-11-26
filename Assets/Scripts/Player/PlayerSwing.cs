@@ -5,12 +5,9 @@ using UnityEngine;
 public class PlayerSwing : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Arm;
+    private Rigidbody2D rb2D;
     [SerializeField]
-    float speed;
-    [SerializeField]
-    Transform pointA, pointB;
-    bool swingLeft = false;
+    private float swingSpeed;
 
     void Update()
     {
@@ -22,17 +19,7 @@ public class PlayerSwing : MonoBehaviour
 
     void Attack()
     {
-       
-        if (swingLeft)
-        {
-            Arm.transform.LookAt(pointA.transform.position, worldUp: transform.forward);
-            swingLeft = true;
-        }
-        else
-        {
-            Arm.transform.LookAt(pointB.transform.position, worldUp: transform.forward);
-            swingLeft = false;
-        }
+        rb2D.MoveRotation(rb2D.rotation + swingSpeed * Time.fixedDeltaTime);
     }
 
 }
