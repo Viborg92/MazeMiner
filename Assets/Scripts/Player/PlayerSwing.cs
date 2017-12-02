@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Player swing.
+/// Handles the attack of the player, check if the left mouse button has been pushed the executes a swing.
+/// </summary>
 public class PlayerSwing : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Tooltip("The child on the playerpref called AxeArm")]
     private Transform axeTransform;
-    [SerializeField]
+    [SerializeField, Tooltip("The speed of the pickaxe when swinged")]
     private float swingSpeed;
-    [SerializeField]
+    [SerializeField, Tooltip("The time before the axe returns to the orginal rotation")]
     private float timeBeforeReturn = 1;
-    [SerializeField]
+    [SerializeField, Tooltip("The time it takes to return to the orginal postion")]
     private float returnTime = 1;
 
     private float speed;
