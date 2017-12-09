@@ -22,4 +22,12 @@ public class BaseEnemyBehaviorContext : MonoBehaviour
     {
         playerPostion = GameObject.Find("Player").transform;
     }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            attackPower -= PlayerHealthContext.health;
+        }
+    }
 }
