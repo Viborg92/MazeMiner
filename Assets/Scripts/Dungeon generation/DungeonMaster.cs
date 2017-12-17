@@ -11,8 +11,8 @@ using System.Linq;
 
 public class DungeonMaster : MonoBehaviour
 {
-    [SerializeField, Tooltip("The total amount of rooms being spawned")] int numOfRoomsToSpwan = 20;
-    [SerializeField, Tooltip("The amount of biggest rooms that should be kept")] int numOfRoomsToKeep = 10;
+    [SerializeField, Tooltip("The total amount of rooms being spawned")] int numberOfRoomsToSpwan = 20;
+    [SerializeField, Tooltip("The amount of biggest rooms that should be kept")] int numberOfRoomsToConnect = 10;
     public float[,] outerBounds = new float[2, 2];
     private float startTime;
 
@@ -61,17 +61,17 @@ public class DungeonMaster : MonoBehaviour
         roomFactory.rooms.Clear();
         startTime = 0;
         startTime = Time.time;
-        for (int i = 0; i < numOfRoomsToSpwan; i++)
+        for (int i = 0; i < numberOfRoomsToSpwan; i++)
         {
             roomFactory.Generate(normalDistribution.Gaussian(), normalDistribution.Gaussian(), Random.Range(-25, 25), Random.Range(-25, 25));
         }
-        biggestRooms = new List<Room>(roomFinder.FindTheBiggest(numOfRoomsToKeep).ToList());
+        biggestRooms = new List<Room>(roomFinder.FindTheBiggest(numberOfRoomsToConnect).ToList());
     }
 
     void DungeonAndPlayerSetup()
     {
         enabled = false; 
-        roomFinder.FindClosestRoom(biggestRooms, numOfRoomsToKeep);
+        roomFinder.FindClosestRoom(biggestRooms, numberOfRoomsToConnect);
         routeMaker.ChooseRoute(biggestRooms[Random.Range(0, biggestRooms.Count)]);
         corridorCreator.Maker(routeMaker.PathList);
         outerBounds = roomFinder.FindMinAndMax();
